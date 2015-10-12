@@ -1,6 +1,5 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,7 +13,6 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
-import com.BrightFuture.RaysRentalSystem.constants.Size;
 import com.BrightFuture.RaysRentalSystem.constants.Status;
 
 @Entity
