@@ -19,25 +19,49 @@
 				<div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
 				    </th:block>
 				
-				    
-				     <div class="row">
-				        <div class="col-md-4 center">
-				           <h1>Add new Bike</h1>
-				           <a class="btn btn-default" href="RaysRentalSystem/newBike">Add new bike</a>
+				    <div class="row">
+				        <div class="col-md-3 centered">
+				        <div class="panel panel-default">
+				     	<div class="panel-body">
+				           <h2>Hire a Bike </h2>
+				           <div class="centered">
+				           	  <a class="btn btn-success" href="RaysRentalSystem/newBike">Hire Bike </a>
+				           </div>
 				         </div>
-				         <div class="col-md-4">
-				           <h1>Return Bike</h1>
-				            <a class="btn btn-default" href="#">Return a bike</a>
+				         </div>
+				         </div>
+				         <div class="col-md-3 centered">
+				        <div class="panel panel-default">
+				     	<div class="panel-body">
+				           <h2>Reserve a Bike </h2>
+				            <div class="centered">
+				            <a class="btn btn-success" href="#">Reserve Bike </a>
+				            </div>
 				          </div>
-				          <div class="col-md-4">
-				             <h1>Manage Bikes</h1>
-				             <a class="btn btn-default" href="#">Manage bikes</a>
 				          </div>
-				           <div class="col-md-4">
-				             <h1>Manage Bikes</h1>
-				             <a class="btn btn-default" href="#">Rent a bike</a>
 				          </div>
-				       </div>
-				   </div>
-	</body>
-</html>
+				          <div class="col-md-3 centered">
+				        <div class="panel panel-default">
+				     	<div class="panel-body">
+				             <h2>Make an enquiry</h2>
+				              <div class="centered">
+				             <a class="btn btn-success" href="#">Make Enquiry</a>
+				          </div>
+						</div>
+						</div>
+						</div>
+						 <div class="col-md-3 centered">
+						<div class="panel panel-default">
+				     	<div class="panel-body">
+				             <h2>Return a Bike</h2>
+				              <div class="centered">
+				             <a class="btn btn-success" href="#">Return a Bike</a>
+				          </div>
+				          </div>
+				          </div>
+						</div>
+					</div>
+				</div>
+			</body>
+		</html>
+		
