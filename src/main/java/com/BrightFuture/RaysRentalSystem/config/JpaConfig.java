@@ -2,8 +2,10 @@ package com.BrightFuture.RaysRentalSystem.config;
 
 import java.util.Properties;
 
+import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import com.BrightFuture.RaysRentalSystem.Application;
+import com.googlecode.genericdao.search.MetadataUtil;
+import com.googlecode.genericdao.search.hibernate.HibernateMetadataUtil;
+import com.googlecode.genericdao.search.jpa.JPASearchProcessor;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -62,7 +67,7 @@ class JpaConfig implements TransactionManagementConfigurer {
     public LocalContainerEntityManagerFactoryBean configureEntityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan("com.BrightFuture.RaysRentalSystem");
+        entityManagerFactoryBean.setPackagesToScan("com.BrightFuture");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
@@ -81,5 +86,19 @@ class JpaConfig implements TransactionManagementConfigurer {
     @Bean
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new JpaTransactionManager();
+    }
+    
+    @Bean
+    public JPASearchProcessor jpaSearchProcessor() {
+    	JPASearchProcessor jpaSearchProcessor = new JPASearchProcessor(metadataUtil());
+    	return jpaSearchProcessor;
+    }
+    
+    @Bean
+    public MetadataUtil metadataUtil() {
+    	EntityManagerFactory entityManagerFactory = configureEntityManagerFactory().getObject();
+    	SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+    	HibernateMetadataUtil metadataUtil = HibernateMetadataUtil.getInstanceForSessionFactory(sessionFactory);
+    	return metadataUtil;
     }
 }
