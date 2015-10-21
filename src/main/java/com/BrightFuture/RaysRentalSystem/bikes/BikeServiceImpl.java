@@ -1,5 +1,8 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +20,13 @@ public class BikeServiceImpl implements BikeService {
 	
 	@Override
 	public Bike addNewBike(Bike bike) {
-		bike.setBikeRecords(null);
+		List<BikeRecord> bikeRecords = new ArrayList<BikeRecord>();
+		bike.setBikeRecords(bikeRecords);
 		bike.setBrand("Giant");
 		bike.setModel("x-5000");
 		bike.setGender(Gender.MALE);
 		bike.setSize(Size.Adults);
-		bikeDAO.save(bike);
+		bikeDAO.persist(bike);
 		return bike;
 	}
 }
