@@ -25,7 +25,7 @@ public class BikeServiceImpl implements BikeService {
 		bike.setBrand("Giant");
 		bike.setModel("x-5000");
 		bike.setGender(Gender.MALE);
-		bike.setSize(Size.Adults);
+		bike.setSize(Size.LARGE);
 		bikeDAO.persist(bike);
 		return bike;
 	}

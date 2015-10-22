@@ -2,8 +2,9 @@ package com.BrightFuture.RaysRentalSystem.constants;
 
 public enum Size
 {
-	KIDS("Children's"), 
-	Adults("Adults");
+	LARGE("Large"), 
+	STANDARD("Standard"),
+	SMALL("Small");
 
 	private String prettyName;
 
