@@ -1,17 +1,19 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
@@ -19,51 +21,46 @@ import org.hibernate.annotations.Proxy;
 import com.BrightFuture.RaysRentalSystem.constants.Gender;
 import com.BrightFuture.RaysRentalSystem.constants.Size;
 
-/**
- * @author slavelle
- *
- */
 @Entity
 @Proxy(lazy = false)
 @Table(name = "bikes")
 public class Bike {
-
+	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy="bike", cascade=CascadeType.ALL)
-	private List<BikeRecord> bikeRecords = new ArrayList<BikeRecord>();
+	@Column(name="bike_number")
+	private Long bikeNumber;
 	
-	@Column(name="brand", nullable=false)
-	private String brand;
-	
-	@Column(name="model", nullable=false)
+	@Column(name="model")
 	private String model;
+		
+	@ManyToOne()
+	@JoinColumn(name="manufacturer_id", foreignKey=@ForeignKey(name="bike_manufacturer_id_fkey"))
+	private Manufacturer manufacturer;
+	
+	@Column(name="purchase_date")
+	private Date purchaseDate;
+
+	@Column(name="price")
+	private BigDecimal price;
 	
 	@Enumerated(EnumType.STRING)
 	private Size size;
 	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-
+	
 	public Long getId() {
 		return id;
 	}
 
-	public List<BikeRecord> getBikeRecords() {
-		return bikeRecords;
+	public Long getBikeNumber() {
+		return bikeNumber;
 	}
 
-	public void setBikeRecords(List<BikeRecord> bikeRecords) {
-		this.bikeRecords = bikeRecords;
-	}
-
-	public String getBrand() {
-		return brand;
-	}
-
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setBikeNumber(Long bikeNumber) {
+		this.bikeNumber = bikeNumber;
 	}
 
 	public String getModel() {
@@ -73,7 +70,31 @@ public class Bike {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	
+
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
+	}
+
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
+	}
+
+	public BigDecimal getPrice() {
+		return price;
+	}
+
+	public void setPrice(BigDecimal price) {
+		this.price = price;
+	}
+
 	public Size getSize() {
 		return size;
 	}
@@ -89,5 +110,4 @@ public class Bike {
 	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
-
 }

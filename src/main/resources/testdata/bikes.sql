@@ -1,4 +1,2 @@
-INSERT INTO `bikes` (`id`, `brand`, `model`, `size`, `gender`) 
-	VALUES 	(1, 'Giant', 'Propel Advanced 0', 'LARGE', 'MALE'),
-			(2, 'Giant', 'Propel Advanced 1', 'STANDARD', 'MALE'),
-			(3, 'Giant', 'Model 3xz', 'STANDARD', 'MALE');
+INSERT INTO `bikes` (`id`, `bike_number`, `model`, `manufacturer_id`, `purchase_date`, `price`, `size`, `gender`) 
+	VALUES 	(1, '3388', 'Propel Advanced 0', null ,'2015-10-08', '350.00', 'SMALL', 'FEMALE');

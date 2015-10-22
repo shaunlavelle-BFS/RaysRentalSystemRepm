@@ -20,9 +20,6 @@ public class BikeServiceImpl implements BikeService {
 	
 	@Override
 	public Bike addNewBike(Bike bike) {
-		List<BikeRecord> bikeRecords = new ArrayList<BikeRecord>();
-		bike.setBikeRecords(bikeRecords);
-		bike.setBrand("Giant");
 		bike.setModel("x-5000");
 		bike.setGender(Gender.MALE);
 		bike.setSize(Size.LARGE);
