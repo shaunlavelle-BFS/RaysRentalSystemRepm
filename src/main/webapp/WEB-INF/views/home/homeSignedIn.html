@@ -18,14 +18,21 @@
 			 <!-- /* The message code is returned from the @Controller */ -->
 				<div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
 				    </th:block>
+				    
+				    <div class ="centered">
+				    <h1> Customers page</h1>
+				    <div class="top-margin"></div>
+				    </div>
 				
 				    <div class="row">
 				        <div class="col-md-3 centered">
 				        <div class="panel panel-default">
 				     	<div class="panel-body">
-				           <h2>Hire a Bike </h2>
+				           <h3>Hire a Bike </h3>
+				           <div class ="margin-30">
+				           </div>
 				           <div class="centered">
-				           	  <a class="btn btn-success" href="RaysRentalSystem/newBike">Hire Bike </a>
+				           	  <a class="btn btn-primary" href="RaysRentalSystem/newBike">Hire Bike </a>
 				           </div>
 				         </div>
 				         </div>
@@ -33,9 +40,11 @@
 				         <div class="col-md-3 centered">
 				        <div class="panel panel-default">
 				     	<div class="panel-body">
-				           <h2>Reserve a Bike </h2>
+				           <h3>Reserve a Bike </h3>
+				                <div class ="margin-30">
+				           </div>
 				            <div class="centered">
-				            <a class="btn btn-success" href="#">Reserve Bike </a>
+				            <a class="btn btn-primary" href="#">Reserve Bike </a>
 				            </div>
 				          </div>
 				          </div>
@@ -43,9 +52,11 @@
 				          <div class="col-md-3 centered">
 				        <div class="panel panel-default">
 				     	<div class="panel-body">
-				             <h2>Make an enquiry</h2>
+				             <h3>Make an enquiry</h3>
+				                  <div class ="margin-30">
+				           </div>
 				              <div class="centered">
-				             <a class="btn btn-success" href="#">Make Enquiry</a>
+				             <a class="btn btn-primary" href="#">Make Enquiry</a>
 				          </div>
 						</div>
 						</div>
@@ -53,9 +64,11 @@
 						 <div class="col-md-3 centered">
 						<div class="panel panel-default">
 				     	<div class="panel-body">
-				             <h2>Return a Bike</h2>
+				             <h3>Return a Bike</h3>
+				                  <div class ="margin-30">
+				           </div>
 				              <div class="centered">
-				             <a class="btn btn-success" href="#">Return a Bike</a>
+				             <a class="btn btn-primary" href="#">Return a Bike</a>
 				          </div>
 				          </div>
 				          </div>
