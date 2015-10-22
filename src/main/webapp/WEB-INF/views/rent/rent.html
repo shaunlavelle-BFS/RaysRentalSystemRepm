@@ -3,7 +3,7 @@
 	
 	<head>
 		
-	<title th:text="#{view.index.title}"></title>
+	<title th:text="#{view.rent.title}"></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -25,7 +25,7 @@
     <link href="../../../resources/css/animate.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/animate.min.css}"/>
 
     <!-- Custom CSS -->
-    <link href="../../../resources/css/creative.css" rel="stylesheet" media="screen" th:href="@{/resources/css/creative.css}"/>
+    <link href="../../../resources/css/rental.css" rel="stylesheet" media="screen" th:href="@{/resources/css/rental.css}"/>
 	
 	<!-- IE9 Scripts -->
    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,10 +45,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="../home/index.html">Customer Home</a>
+                <a class="navbar-brand page-scroll" href="../home/index.html">Home</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
+   <!--          Collect the nav links, forms, and other content for toggling
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -62,7 +62,8 @@
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
+            /.navbar-collapse -->
+        
         </div>
         <!-- /.container-fluid -->
     </nav>
@@ -70,10 +71,10 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Rays Rentals</h1>
+                <h1>Rent a bike</h1>
                 <hr>
-                <p>With over 150 bicycles, regular maintenance safety checks and a dedicated hiring team to help you make your choice, Rays Rentals is the only choice for bike hiring.</p>
-                <a href="#services" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p>We have a wide range of safety assured bicycles for all ages and genders.</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Lets Begin</a>
                 </hr>
             </div>
         </div>
@@ -83,120 +84,26 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
+                    <h2 class="section-heading">Reserve or Rent Today!</h2>
                     <hr class="light">
-                    <p class="text-faded">View our wide collection of bikes for everyone, contact us for any enquiries or rent your bike today or reserve it for a later date!</p>
-                    <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
+                    <p class="text-faded">To start you rays rental experience fill in the form below or first view the bike we have to offer.</p>
+                    <a href="#" class="btn btn-default btn-xl">Our Bicycle Collection</a>
                     </hr>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Services</h2>
-                    <hr class="primary">
-                    </hr>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-bicycle wow bounceIn text-primary"></i>
-                        <h3>Our Bikes</h3>
-                        <p class="text-muted">With over 150 Bicycles we have something for everyone.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-cog wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Improve your experience</h3>
-                        <p class="text-muted">We also sell a wide range of accessories for your bike.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-calendar wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Ride away today</h3>
-                        <p class="text-muted">Rent a bike today or reserve one for a later date.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-wrench wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Regular Maintenance</h3>
-                        <p class="text-muted">Our bikes are regularly safety checked so your safety is guaranteed.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="no-padding">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="../../../resources/img/pagespreview/1.jpg" th:src="@{/resources/img/pagespreview/1.jpg}" class="img-responsive" alt=""/>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Bicycles
-                                </div>
-                                <div class="project-name">
-                                    View our collection
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="../../../resources/img/pagespreview/2.jpg" th:src="@{/resources/img/pagespreview/2.jpg}" class="img-responsive" alt=""/>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Enquiries
-                                </div>
-                                <div class="project-name">
-                                    Ask us a question or view our FAQs
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="../../../resources/img/pagespreview/3.jpg" th:src="@{/resources/img/pagespreview/3.jpg}" class="img-responsive" alt=""/>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Hiring
-                                </div>
-                                <div class="project-name">
-                                    Rent or reserve a bike
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!--     <aside class="bg-dark">
+     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-            </div>
-        </div>
-    </aside> -->
+                <h2>Ride Away Today</h2>
+                <hr class="primary">
+                
+                </hr>
+        	</div>
+      	</div>
+     </aside>
 
     <section id="contact">
         <div class="container">
