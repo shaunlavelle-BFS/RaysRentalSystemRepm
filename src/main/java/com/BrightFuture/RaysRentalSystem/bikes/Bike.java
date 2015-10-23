@@ -13,12 +13,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import com.BrightFuture.RaysRentalSystem.constants.Classification;
 import com.BrightFuture.RaysRentalSystem.constants.Gender;
 import com.BrightFuture.RaysRentalSystem.constants.Size;
+import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
 
 @Entity
 @Proxy(lazy = false)
@@ -49,6 +52,28 @@ public class Bike {
 	
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
+	
+	@Enumerated(EnumType.STRING)
+	private Classification classification;
+	
+	@OneToOne(mappedBy="bike")
+	private DisposalDetails disposalDetails;
+	
+	public Classification getClassification() {
+		return classification;
+	}
+
+	public void setClassification(Classification classification) {
+		this.classification = classification;
+	}
+
+	public DisposalDetails getDisposalDetails() {
+		return disposalDetails;
+	}
+
+	public void setDisposalDetails(DisposalDetails disposalDetails) {
+		this.disposalDetails = disposalDetails;
+	}
 	
 	public Long getId() {
 		return id;

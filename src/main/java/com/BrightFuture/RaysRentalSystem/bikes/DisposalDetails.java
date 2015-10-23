@@ -1,29 +1,30 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigDecimal;
+import java.sql.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
 @Entity
 @Proxy(lazy = false)
-@Table(name = "manufacturer")
-public class Manufacturer {
+@Table(name = "disposal_details")
+public class DisposalDetails {
 	
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy="manufacturer", cascade=CascadeType.ALL)
-	private List<Bike> bikes = new ArrayList<Bike>();
+	@Column(name="dealer_name")
+	private String dealerName;
 	
 	@Column(name="address_line1")
 	private String addressLine1;
@@ -42,17 +43,27 @@ public class Manufacturer {
 	
 	@Column(name="telephone")
 	private String telephone;
+	
+	@Column(name="sale_price")
+	private BigDecimal salePrice;
+	
+	@Column(name="sale_date")
+	private Date saleDate;
+	
+	@OneToOne
+	@JoinColumn(name="bike_id", foreignKey=@ForeignKey(name="disposal_details_bike_fk"))
+	private Bike bike;
 
 	public Long getId() {
 		return id;
 	}
 
-	public List<Bike> getBikes() {
-		return bikes;
+	public String getDealerName() {
+		return dealerName;
 	}
 
-	public void setBikes(List<Bike> bikes) {
-		this.bikes = bikes;
+	public void setDealerName(String dealerName) {
+		this.dealerName = dealerName;
 	}
 
 	public String getAddressLine1() {
@@ -102,5 +113,28 @@ public class Manufacturer {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	
+
+	public BigDecimal getSalePrice() {
+		return salePrice;
 	}
+
+	public void setSalePrice(BigDecimal salePrice) {
+		this.salePrice = salePrice;
+	}
+
+	public Date getSaleDate() {
+		return saleDate;
+	}
+
+	public void setSaleDate(Date saleDate) {
+		this.saleDate = saleDate;
+	}
+
+	public Bike getBike() {
+		return bike;
+	}
+
+	public void setBike(Bike bike) {
+		this.bike = bike;
+	}
+}

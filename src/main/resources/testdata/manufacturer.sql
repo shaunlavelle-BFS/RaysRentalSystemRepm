@@ -1,0 +1,2 @@
+INSERT INTO `manufacturer` (`id`, `name`, `address_line1`, `address_line2`, `city`, `county`, `postcode`, `telephone`) 
+	VALUES 	(1, 'Super Bike', 'Buxton Road', null, 'Sheffield','South Yorkshire', 'S13 4RA', '01234567891');
