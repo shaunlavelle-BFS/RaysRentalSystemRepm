@@ -1,8 +1,5 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +22,11 @@ public class BikeServiceImpl implements BikeService {
 		bike.setSize(Size.LARGE);
 		bikeDAO.persist(bike);
 		return bike;
+	}
+
+	@Override
+	public Bike hireBike() {
+		//need a get and post method.. pass in a form with all details on
+		return null;
 	}
 }

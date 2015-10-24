@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import com.BrightFuture.RaysRentalSystem.address.Address;
+
 @Entity
 @Proxy(lazy = false)
 @Table(name = "disposal_details")
@@ -25,21 +27,6 @@ public class DisposalDetails {
 	
 	@Column(name="dealer_name")
 	private String dealerName;
-	
-	@Column(name="address_line1")
-	private String addressLine1;
-	
-	@Column(name="address_line2")
-	private String addressLine2;
-	
-	@Column(name="city")
-	private String city;
-	
-	@Column(name="county")
-	private String county;
-	
-	@Column(name="postcode")
-	private String postcode;
 	
 	@Column(name="telephone")
 	private String telephone;
@@ -53,6 +40,18 @@ public class DisposalDetails {
 	@OneToOne
 	@JoinColumn(name="bike_id", foreignKey=@ForeignKey(name="disposal_details_bike_fk"))
 	private Bike bike;
+	
+	@OneToOne
+	@JoinColumn(name="address_id", foreignKey=@ForeignKey(name="disposal_details_address_fk"))
+	private Address address;
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
 	public Long getId() {
 		return id;
@@ -64,46 +63,6 @@ public class DisposalDetails {
 
 	public void setDealerName(String dealerName) {
 		this.dealerName = dealerName;
-	}
-
-	public String getAddressLine1() {
-		return addressLine1;
-	}
-
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
-	}
-
-	public String getAddressLine2() {
-		return addressLine2;
-	}
-
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
-
-	public String getCity() {
-		return city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getCounty() {
-		return county;
-	}
-
-	public void setCounty(String county) {
-		this.county = county;
-	}
-
-	public String getPostcode() {
-		return postcode;
-	}
-
-	public void setPostcode(String postcode) {
-		this.postcode = postcode;
 	}
 
 	public String getTelephone() {
