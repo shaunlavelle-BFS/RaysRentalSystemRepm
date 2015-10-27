@@ -85,7 +85,7 @@
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
                     <h2 class="section-heading">We've got what you need!</h2>
                     <hr class="light">
                     <p class="text-faded">View our wide collection of bikes for everyone, contact us for any enquiries or rent your bike today or reserve it for a later date!</p>
@@ -94,28 +94,38 @@
                     <form th:if="${bike}" th:action="@{/newBike}" method="POST" th:object="${bike}">
                     	<div class="col-sm-12 margin-bottom-15 clearfix">
 	                    	<div class="col-md-2">
-								<label class="no-padding">Last Name</label>
+								<label class="no-padding">Bike number </label>
 							</div>
 					  		<div class="col-md-4 ">
 								<input id="userFirstName" type="text" class="form-control "/>
 							</div>
 							<div class="col-md-2">
-								<label class="no-padding">Last Name</label>
+								<label class="no-padding">Classification</label>
 							</div>
 							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control "/>
+								<select id="userFirstName" type="text" class="form-control ">
+									<option value="">Select classification</option>
+									<option value="Road">Road</option>
+									<option value="Mountain">Mountain</option>
+									<option value="Tandem">Tandem</option>
+								</select>
 							</div>
 						</div>
 						
 					<div class="col-sm-12 margin-bottom-15 clearfix">
 						<div class="col-md-2">
-							<label class="no-padding">Last Name</label>
+							<label class="no-padding">Gender</label>
 						</div>
 						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
+							<select id="userFirstName" class="form-control">
+								<option value="">select gender</option>
+								<option value="male">male</option>
+								<option value="female">female</option>
+							</select>
 						</div>
+						
 						<div class="col-md-2">
-							<label class="no-padding">Last Name</label>
+							<label class="no-padding">Model</label>
 						</div>
 						<div class="col-md-4 ">
 							<input id="userFirstName" type="text" class="form-control"/>
@@ -124,13 +134,28 @@
 					
 					<div class="col-sm-12 margin-bottom-15 clearfix">
 						<div class="col-md-2">
-							<label class="no-padding">Last Name</label>
+							<label class="no-padding">Price </label>
 						</div>
 						<div class="col-md-4 ">
 							<input id="userFirstName" type="text" class="form-control"/>
 						</div>
 						<div class="col-md-2">
-							<label class="no-padding">Last Name</label>
+							<label class="no-padding">Purchase date</label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-12 margin-bottom-15 clearfix">
+						<div class="col-md-2">
+							<label class="no-padding">Size  </label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+						<div class="col-md-2">
+							<label class="no-padding">Manufacturer id</label>
 						</div>
 						<div class="col-md-4 ">
 							<input id="userFirstName" type="text" class="form-control"/>
