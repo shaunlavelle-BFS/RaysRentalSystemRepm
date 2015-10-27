@@ -66,6 +66,25 @@ public class Bike {
 	@OneToMany(mappedBy="bike")
 	private List<MaintenanceRecord> maintenanceRecords = new ArrayList<MaintenanceRecord>();
 	
+	@OneToMany(mappedBy="bike")
+	private List<RentalRecord> rentalRecords = new ArrayList<RentalRecord>();
+	
+	public List<MaintenanceRecord> getMaintenanceRecords() {
+		return maintenanceRecords;
+	}
+
+	public void setMaintenanceRecords(List<MaintenanceRecord> maintenanceRecords) {
+		this.maintenanceRecords = maintenanceRecords;
+	}
+
+	public List<RentalRecord> getRentalRecords() {
+		return rentalRecords;
+	}
+
+	public void setRentalRecords(List<RentalRecord> rentalRecords) {
+		this.rentalRecords = rentalRecords;
+	}
+
 	public Classification getClassification() {
 		return classification;
 	}

@@ -60,13 +60,9 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                    <li th:if="${#authorization.expression('!isAuthenticated()')}">
-                        <a href="/signin" class="page-scroll" th:href="@{/signin}">Login</a>
+                    <li>
+                        <a class="page-scroll" href="#login">Logout</a>
                     </li>
-                     <li th:if="${#authorization.expression('isAuthenticated()')}">
-	                 	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
-	                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
-               		 </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

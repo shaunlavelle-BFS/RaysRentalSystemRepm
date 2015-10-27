@@ -17,9 +17,17 @@ public class BikeController
 	@RequestMapping(value="newBike", method = RequestMethod.GET) 
 	public ModelAndView addNewBike() 
 	{
-	/*	Bike bike = new Bike();
-		bikeService.addNewBike(bike);*/
+		Bike bike = new Bike();
 		ModelAndView mv = new ModelAndView("bike/newBike");
+		mv.addObject("bike", bike);
+		return mv;
+	}
+	
+	@RequestMapping(value="newBike", method = RequestMethod.POST) 
+	public ModelAndView addNewBike(Bike bike) 
+	{
+		ModelAndView mv = new ModelAndView("bike/newBike");
+		mv.addObject("bike", bike);
 		return mv;
 	}
 }
