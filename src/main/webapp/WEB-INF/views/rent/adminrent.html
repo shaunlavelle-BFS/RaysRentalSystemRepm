@@ -36,7 +36,6 @@
 <body id="page-top">
 
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-	
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -46,9 +45,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="@{/}">Home</a>
+                <a class="navbar-brand page-scroll" th:href="@{/}">Home</a>
             </div>
-         </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    	<li><a><strong th:text="${#authentication.principal.username}">No User Logged In</strong></a></li>    
+                     <li class="logout" th:if="${#authorization.expression('isAuthenticated()')}">
+		               	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:text="Logout"></a>
+           	 		 	<form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+	           		</li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
     </nav>
     
 	<header>
@@ -62,12 +74,6 @@
             </div>
         </div>
     </header>
-    
-   	<li class="logout" th:if="${#authorization.expression('isAuthenticated()')}">
-	        <a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:text="LOGOUT"></a>
-	        <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
-   		</li>
-
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
