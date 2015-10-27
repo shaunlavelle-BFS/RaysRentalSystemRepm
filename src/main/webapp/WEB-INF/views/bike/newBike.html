@@ -86,12 +86,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
+                    <h2 class="section-heading"> Select a new bike </h2>
                     <hr class="light">
-                    <p class="text-faded">View our wide collection of bikes for everyone, contact us for any enquiries or rent your bike today or reserve it for a later date!</p>
+                    <p class="text-faded"> In order to select a new bike for customer you must fill out the form below with the correct 
+                    credentials and click submit.</p>
                     <!-- <a href="#" class="btn btn-default btn-xl">Get Started!</a> -->
                     </hr>
                     <form th:if="${bike}" th:action="@{/newBike}" method="POST" th:object="${bike}">
+                    	
+                   		<input type="hidden" class="id"></input>	
+                    	
+                    	
                     	<div class="col-sm-12 margin-bottom-15 clearfix">
 	                    	<div class="col-md-2">
 								<label class="no-padding">Bike number </label>
@@ -147,7 +152,7 @@
 						</div>
 					</div>
 					
-					<div class="col-sm-12 margin-bottom-15 clearfix">
+					<div class="col-sm-12 margin-bottom-40 clearfix">
 						<div class="col-md-2">
 							<label class="no-padding">Size  </label>
 						</div>
@@ -161,6 +166,13 @@
 							<input id="userFirstName" type="text" class="form-control"/>
 						</div>
 					</div>
+					
+					<button onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; " type="submit" th:href="@{/account/create}"
+					name="createUserBtn" id="createUserBtn"
+					class="btn btn-warning tab-button create-user">Create
+					user</button>
+					
+					
 					
 					</form>	
                 </div>
