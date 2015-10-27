@@ -60,16 +60,17 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#login">Logout</a>
-                    </li>
+                    	<li><a><strong th:text="${#authentication.principal.username}">No User Logged In</strong></a></li>    
+                     <li class="logout" th:if="${#authorization.expression('isAuthenticated()')}">
+		               	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();" th:text="LOGOUT"></a>
+           	 		 	<form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+	           		</li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-
     <header>
         <div class="header-content">
             <div class="header-content-inner">
