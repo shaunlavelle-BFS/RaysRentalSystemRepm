@@ -34,8 +34,48 @@
     </head>
 
 <body id="page-top">
+<!-- Admin Nav Bar -->
+    <nav th:if="${#authorization.expression('isAuthenticated()')}" id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Rays Rentals | Admin</a>
+            </div>
 
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                	<li>
+                        <a href="/signup" class="page-scroll" th:href="@{/signup}">Register</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Orders</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Bikes</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="">Stock</a>
+                    </li>
+                    <li>
+	                 	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
+	                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+               		 </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+<!-- Customer Nav Bar -->
+<nav th:if="${#authorization.expression('!isAuthenticated()')}" id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -51,9 +91,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                	<li th:if="${#authorization.expression('isAuthenticated()')}">
-                        <a href="/signup" class="page-scroll" th:href="@{/signup}">Register</a>
-                    </li>
                     <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
@@ -63,19 +100,15 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
-                    <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                    <li>
                         <a href="/signin" class="page-scroll" th:href="@{/signin}">Login</a>
                     </li>
-                     <li th:if="${#authorization.expression('isAuthenticated()')}">
-	                 	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
-	                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
-               		 </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
-    </nav>
+    </nav> 
 
     <header>
         <div class="header-content">
@@ -156,7 +189,7 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Bicycles
+                                    Stock
                                 </div>
                                 <div class="project-name">
                                     View our collection
@@ -198,15 +231,6 @@
             </div>
         </div>
     </section>
-
-<!--     <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-            </div>
-        </div>
-    </aside> -->
 
     <section id="contact">
         <div class="container">
