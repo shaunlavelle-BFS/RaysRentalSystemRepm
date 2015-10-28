@@ -3,30 +3,70 @@
 <head>
     <title>Sign In</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../../resources/img/favicon.ico" type="image/x-icon" th:href="@{/resources/img/favicon.ico}"/>
+
+	<!-- Bootstrap Core CSS -->
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+	
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/>
+    <link href="../../../resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen" th:href="@{/resources/font-awesome/css/font-awesome.min.css}"/>
+
+    <!-- Plugin CSS -->
+    <link href="../../../resources/css/animate.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/animate.min.css}"/>
+
+    <!-- Custom CSS -->
+    <link href="../../../resources/css/signin.css" rel="stylesheet" media="screen" th:href="@{/resources/css/signin.css}"/>
+	
+	<!-- IE9 Scripts -->
+   	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 </head>
 <body>
-<form class="form-narrow form-horizontal" action="#" method="post" th:action="@{/authenticate}">
-    <th:block th:if="${param.error != null}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
-    </th:block>
+	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="/index">Home</a>
+            </div>
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">Register</a>
+                    </li>
+                </ul>
+         	</div>
+         </div>
+    </nav>
+	<header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Employee Login</h1>
+                <hr>
+                </hr>
+                <form class="form-narrow form-horizontal" action="#" method="post" th:action="@{/authenticate}">
     <fieldset>
-        <legend>Please Sign In</legend>
         <div class="form-group">
-            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-            <div class="col-lg-10">
-                <input type="text" class="form-control" id="inputEmail" placeholder="Email" name="username" />
+            <div class="col-lg-4 col-lg-offset-4">
+                <input style="text-align:center; color:#fff;" type="text" class="form-control transparent-input" id="inputEmail" placeholder="Email" name="username"/>
             </div>
         </div>
         <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" />
+            <div class="col-lg-4 col-lg-offset-4">
+                <input style="text-align:center; color:#fff;" type="password" class="form-control transparent-input" id="inputPassword" placeholder="Password" name="password"/>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
+            <div class="col-lg-4 col-lg-offset-4">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="_spring_security_remember_me" /> Remember me
@@ -35,16 +75,18 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-                <button type="submit" class="btn btn-default">Sign in</button>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-offset-2 col-lg-10">
-                <p>New here? <a href="signup" th:href="@{/signup}">Sign Up</a></p>
+            <div class="col-lg-4 col-lg-offset-4">
+                <button type="submit" class="btn btn-default">LOGIN</button>
             </div>
         </div>
     </fieldset>
+    <!-- If sign in fails this displays -->
+   	<th:block th:if="${param.error != null}">
+        <div th:replace="fragments/alert :: alert (type='danger', message='Sign in error. Please try again.')">Alert</div>
+    </th:block>
 </form>
+</div>
+</div>
+</header>
 </body>
 </html>
