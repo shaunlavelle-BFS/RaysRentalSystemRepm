@@ -8,9 +8,15 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/")
 public class RentController {
 
-	@RequestMapping("adminRent")
+	@RequestMapping("customerRent")
 	public ModelAndView rentView() {
-		ModelAndView mv = new ModelAndView("rent/adminrent");
+		ModelAndView mv = new ModelAndView("rent/customerRent");
+		return mv;
+	}
+	
+	@RequestMapping("adminRent")
+	public ModelAndView rentForm() {
+		ModelAndView mv = new ModelAndView("rent/adminRent");
 		return mv;
 	}
 }
