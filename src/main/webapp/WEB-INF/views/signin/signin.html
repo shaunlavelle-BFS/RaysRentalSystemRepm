@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sign In</title>
+    <title th:text="#{view.signin.title}"></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	
 	<!-- Favicon -->
@@ -41,7 +41,7 @@
              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Register</a>
+                        <a href="/signup" class="page-scroll" th:href="@{/signup}">Register</a>
                     </li>
                 </ul>
          	</div>
