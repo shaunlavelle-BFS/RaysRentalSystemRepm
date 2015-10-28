@@ -48,10 +48,6 @@
                 </hr>
 
 <form class="form-narrow form-horizontal" method="post" th:action="@{/signup}" th:object="${signupForm}">
-    <!--/* Show general error message when form contains errors */-->
-    <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">
-        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
-    </th:block>
     <fieldset>
         <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
             <div class="col-lg-4 col-lg-offset-4">
@@ -76,6 +72,10 @@
             </div>
         </div>
     </fieldset>
+        <!--/* Show general error message when form contains errors */-->
+    <th:block th:if="${#fields.hasErrors('${signupForm.*}')}">
+        <div th:replace="fragments/alert :: alert (type='danger', message='Form contains errors. Please try again.')">Alert</div>
+    </th:block>
 </form>
 </div>
 </div>
