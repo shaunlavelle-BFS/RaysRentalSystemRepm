@@ -27,6 +27,10 @@ import com.BrightFuture.RaysRentalSystem.constants.Size;
 import com.BrightFuture.RaysRentalSystem.maintenance.MaintenanceRecord;
 import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
 
+/**
+ * @author slavelle
+ *
+ */
 @Entity
 @Proxy(lazy = false)
 @Table(name = "bikes")

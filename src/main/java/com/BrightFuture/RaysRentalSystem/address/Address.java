@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Proxy;
 
 import com.BrightFuture.RaysRentalSystem.bikes.DisposalDetails;
+import com.BrightFuture.RaysRentalSystem.customer.Customer;
 import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
 
 @Entity
@@ -41,6 +42,9 @@ public class Address {
 	
 	@OneToOne(mappedBy="address")
 	private Manufacturer manufacturer;
+	
+	@OneToOne(mappedBy="address")
+	private Customer customer;
 
 	public Long getId() {
 		return id;
@@ -56,6 +60,30 @@ public class Address {
 
 	public String getAddressLine2() {
 		return addressLine2;
+	}
+
+	public DisposalDetails getDisposalDetails() {
+		return disposalDetails;
+	}
+
+	public void setDisposalDetails(DisposalDetails disposalDetails) {
+		this.disposalDetails = disposalDetails;
+	}
+
+	public Manufacturer getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(Manufacturer manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	public void setAddressLine2(String addressLine2) {

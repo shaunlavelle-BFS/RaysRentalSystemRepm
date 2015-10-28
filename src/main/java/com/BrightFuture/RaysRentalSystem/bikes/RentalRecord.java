@@ -12,12 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
-import com.BrightFuture.RaysRentalSystem.address.Address;
+import com.BrightFuture.RaysRentalSystem.customer.Customer;
 
 @Entity
 @Proxy(lazy = false)
@@ -27,10 +26,6 @@ public class RentalRecord {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToOne
-	@JoinColumn(name="customer_address", foreignKey=@ForeignKey(name="rental_record_address_fk"))
-	private Address address;
-
 	@Column(name="rent_date")
 	private Date rentDate;
 	
@@ -43,26 +38,19 @@ public class RentalRecord {
 	@Column(name="return_time_actual")
 	private Timestamp returnTimeActual;
 	
-	@Column(name="telephone")
-	private String telephone;
-	
 	@Column(name="amount_paid")
 	private BigDecimal amountPaid;
 	
 	@ManyToOne()
 	@JoinColumn(name="bike_id", foreignKey=@ForeignKey(name="rental_record_bike_id_fkey"))
 	private Bike bike;
+	
+	@ManyToOne()
+	@JoinColumn(name="customer_id", foreignKey=@ForeignKey(name="rental_record_customer_id_fkey"))
+	private Customer customer;
 
 	public Long getId() {
 		return id;
-	}
-
-	public Address getAddress() {
-		return address;
-	}
-
-	public void setAddress(Address address) {
-		this.address = address;
 	}
 
 	public Date getRentDate() {
@@ -95,14 +83,6 @@ public class RentalRecord {
 
 	public void setReturnTimeActual(Timestamp returnTimeActual) {
 		this.returnTimeActual = returnTimeActual;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
 	}
 
 	public BigDecimal getAmountPaid() {
