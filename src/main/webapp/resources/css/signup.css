@@ -179,7 +179,7 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-color:#E0E0E0;
+    background-image: url(../img/signupheader.jpg); 
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
