@@ -22,7 +22,6 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Proxy;
 
 import com.BrightFuture.RaysRentalSystem.constants.Classification;
-import com.BrightFuture.RaysRentalSystem.constants.Gender;
 import com.BrightFuture.RaysRentalSystem.constants.Size;
 import com.BrightFuture.RaysRentalSystem.maintenance.MaintenanceRecord;
 import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
@@ -57,9 +56,6 @@ public class Bike {
 	
 	@Enumerated(EnumType.STRING)
 	private Size size;
-	
-	@Enumerated(EnumType.STRING)
-	private Gender gender;
 	
 	@Enumerated(EnumType.STRING)
 	private Classification classification;
@@ -155,13 +151,5 @@ public class Bike {
 
 	public void setSize(Size size) {
 		this.size = size;
-	}
-
-	public Gender getGender() {
-		return gender;
-	}
-
-	public void setGender(Gender gender) {
-		this.gender = gender;
 	}
 }

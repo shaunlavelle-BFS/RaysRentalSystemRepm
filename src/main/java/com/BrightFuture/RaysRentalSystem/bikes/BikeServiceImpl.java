@@ -5,7 +5,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.BrightFuture.RaysRentalSystem.constants.Gender;
 import com.BrightFuture.RaysRentalSystem.constants.Size;
 
 @Service
@@ -17,23 +16,19 @@ public class BikeServiceImpl implements BikeService {
 	
 	@Override
 	public Bike addNewBike(Bike bike) {
-		bike.setModel("x-5000");
-		bike.setGender(Gender.MALE);
-		bike.setSize(Size.LARGE);
-		bikeDAO.persist(bike);
-		return bike;
+		return null;
 	}
 
 	@Override
 	public Bike hireBike() {
+		// TODO Auto-generated method stub
 		//need a get and post method.. pass in a form with all details on
 		return null;
 	}
 
 	@Override
 	public int retrieveAvailableAdultBikeCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bikeDAO.retrieveAvailableAdultBikeCount();
 	}
 
 	@Override
