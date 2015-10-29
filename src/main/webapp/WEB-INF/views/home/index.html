@@ -26,7 +26,8 @@
     <link href="../../../resources/css/animate.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/animate.min.css}"/>
 
     <!-- Custom CSS -->
-    <link href="../../../resources/css/creative.css" rel="stylesheet" media="screen" th:href="@{/resources/css/creative.css}"/>
+    <link th:if="${#authorization.expression('!isAuthenticated()')}" href="../../../resources/css/creative.css" rel="stylesheet" media="screen" th:href="@{/resources/css/index.css}"/>
+    <link th:if="${#authorization.expression('isAuthenticated()')}" href="../../../resources/css/creative.css" rel="stylesheet" media="screen" th:href="@{/resources/css/adminindex.css}"/>
 	
 	<!-- IE9 Scripts -->
    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -118,7 +119,7 @@
                 <h1 th:if="${#authorization.expression('isAuthenticated()')}" th:text="'Welcome, ' + ${#authentication.principal.username}"></h1>
                 <hr>
                 <!-- Admin Text -->
-                <p th:if="${#authorization.expression('isAuthenticated()')}">Welcome to the admin dashboard, here you can manage orders, maintain bikes and stock and also respond to general customer enquiries.</p>
+                <a th:if="${#authorization.expression('isAuthenticated()')}" href="#adminpanel" class="btn btn-primary btn-xl page-scroll">Admin Panel</a>
                 <!-- Customer Text and button -->
                 <p th:if="${#authorization.expression('!isAuthenticated()')}">With over 150 bicycles, regular maintenance safety checks and a dedicated hiring team to help you make your choice, Rays Rentals is the only choice for bike rental.</p>
                 <a th:if="${#authorization.expression('!isAuthenticated()')}" href="#services" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
@@ -126,7 +127,7 @@
             </div>
         </div>
     </header>
-
+	<!-- Customer about section -->
     <section th:if="${#authorization.expression('!isAuthenticated()')}" class="bg-primary" id="about">
         <div class="container">
             <div class="row">
@@ -134,6 +135,19 @@
                     <h2 class="section-heading">We've got what you need!</h2>
                     <hr class="light">
                     <p class="text-faded">View our wide collection of bikes for everyone, contact us for any enquiries or rent your bike today or reserve it for a later date!</p>
+                    </hr>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Admin about section -->
+    <section th:if="${#authorization.expression('isAuthenticated()')}" class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Admin Dashboard</h2>
+                    <hr class="light">
+                    <p class="text-faded">Here you can manage orders, maintain stock and bicycles and view any customer enquiries.</p>
                     </hr>
                 </div>
             </div>
@@ -236,7 +250,7 @@
         </div>
     </section>
     <!-- Admin index panels -->
-    <section th:if="${#authorization.expression('isAuthenticated()')}" class="no-padding">
+    <section th:if="${#authorization.expression('isAuthenticated()')}" class="no-padding" id="#adminpanel">
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
@@ -248,7 +262,7 @@
                                     Stock
                                 </div>
                                 <div class="project-name">
-                                    View and manage
+                                    View and manage our stock
                                 </div>
                             </div>
                         </div>
@@ -278,7 +292,52 @@
                                     Orders
                                 </div>
                                 <div class="project-name">
-                                    View and manage
+                                    View and manage customer orders
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="../../../resources/img/pagespreview/3.jpg" th:src="@{/resources/img/pagespreview/3.jpg}" class="img-responsive" alt=""/>
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Bicycles
+                                </div>
+                                <div class="project-name">
+                                    Maintain our bicycle stock
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="../../../resources/img/pagespreview/3.jpg" th:src="@{/resources/img/pagespreview/3.jpg}" class="img-responsive" alt=""/>
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Users
+                                </div>
+                                <div class="project-name">
+                                    Add, delete or edit users
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#" class="portfolio-box">
+                        <img src="../../../resources/img/pagespreview/3.jpg" th:src="@{/resources/img/pagespreview/3.jpg}" class="img-responsive" alt=""/>
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Customers
+                                </div>
+                                <div class="project-name">
+                                    View our current customers
                                 </div>
                             </div>
                         </div>
