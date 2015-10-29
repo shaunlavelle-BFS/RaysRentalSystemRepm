@@ -118,7 +118,7 @@
                 <h1 th:if="${#authorization.expression('isAuthenticated()')}" th:text="'Welcome, ' + ${#authentication.principal.username}"></h1>
                 <hr>
                 <!-- Admin Text -->
-                <p th:if="${#authorization.expression('isAuthenticated()')}">Welcome to the admin dashboard, here you can view orders, manage bikes and stocks and also respond to general customer enquiries.</p>
+                <p th:if="${#authorization.expression('isAuthenticated()')}">Welcome to the admin dashboard, here you can manage orders, maintain bikes and stock and also respond to general customer enquiries.</p>
                 <!-- Customer Text and button -->
                 <p th:if="${#authorization.expression('!isAuthenticated()')}">With over 150 bicycles, regular maintenance safety checks and a dedicated hiring team to help you make your choice, Rays Rentals is the only choice for bike rental.</p>
                 <a th:if="${#authorization.expression('!isAuthenticated()')}" href="#services" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
