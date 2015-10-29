@@ -53,23 +53,35 @@
             <div class="header-content-inner">
                 <h1>Rent a bike</h1>
                 <hr>
-                
-                 
-                
-                
-                
-                
-                 <form th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}" th:action="@{/rentBike}" method="POST" th:object="${rentForm}">
-                    	
-                   		<input type="hidden" class="id"></input>	
-                    	
-                    	
-                    	<div class="col-sm-12 margin-bottom-15 clearfix">
-	                    	<div class="col-md-2">
+				<body th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}">
+					
+					<h3>Adult bikes available:</h3>
+					<h3>Child bikes available:</h3>
+					
+					
+					
+					
+					
+					
+					
+				
+					
+				
+				
+				
+				
+				
+				
+					<form th:action="@{/rentBike}" method="POST" th:object="${rentForm}">
+	
+						<input type="hidden" class="id"></input>
+	
+						<div class="col-sm-12 margin-bottom-15 clearfix">
+							<div class="col-md-2">
 								<label class="no-padding">Bike number</label>
 							</div>
-					  		<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control "/>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control " />
 							</div>
 							<div class="col-md-2">
 								<label class="no-padding">Classification</label>
@@ -83,70 +95,63 @@
 								</select>
 							</div>
 						</div>
-						
-					<div class="col-sm-12 margin-bottom-15 clearfix">
-						<div class="col-md-2">
-							<label class="no-padding">Gender</label>
+	
+						<div class="col-sm-12 margin-bottom-15 clearfix">
+							<div class="col-md-2">
+								<label class="no-padding">Gender</label>
+							</div>
+							
+							<div class="col-md-4 ">
+								<select id="userFirstName" class="form-control">
+									<option value="">select gender</option>
+									<option value="male">Male</option>
+									<option value="female">Female</option>
+								</select>
+							</div>
+	
+							<div class="col-md-2">
+								<label class="no-padding">Model</label>
+							</div>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control" />
+							</div>
 						</div>
-						<div class="col-md-4 ">
-							<select id="userFirstName" class="form-control">
-								<option value="">select gender</option>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-							</select>
+	
+						<div class="col-sm-12 margin-bottom-15 clearfix">
+							<div class="col-md-2">
+								<label class="no-padding">Bike price </label>
+							</div>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control" />
+							</div>
+							<div class="col-md-2">
+								<label class="no-padding">Purchase date</label>
+							</div>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control" />
+							</div>
 						</div>
-						
-						<div class="col-md-2">
-							<label class="no-padding">Model</label>
+	
+						<div class="col-sm-12 margin-bottom-40 clearfix">
+							<div class="col-md-2">
+								<label class="no-padding">Bike size </label>
+							</div>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control" />
+							</div>
+							<div class="col-md-2">
+								<label class="no-padding">Manufacturer ID</label>
+							</div>
+							<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control" />
+							</div>
 						</div>
-						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
-						</div>
-					</div>
+	
+						<button	onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; "
+							type="submit" th:href="@{/account/create}" name="createUserBtn" id="createUserBtn" class="btn btn-warning tab-button create-user"> Submit</button>
 					
-					<div class="col-sm-12 margin-bottom-15 clearfix">
-						<div class="col-md-2">
-							<label class="no-padding">Bike price </label>
-						</div>
-						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
-						</div>
-						<div class="col-md-2">
-							<label class="no-padding">Purchase date</label>
-						</div>
-						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
-						</div>
-					</div>
-					
-					<div class="col-sm-12 margin-bottom-40 clearfix">
-						<div class="col-md-2">
-							<label class="no-padding">Bike size  </label>
-						</div>
-						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
-						</div>
-						<div class="col-md-2">
-							<label class="no-padding">Manufacturer ID</label>
-						</div>
-						<div class="col-md-4 ">
-							<input id="userFirstName" type="text" class="form-control"/>
-						</div>
-					</div>
-					
-					<button onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; " type="submit" th:href="@{/account/create}"
-					name="createUserBtn" id="createUserBtn"
-					class="btn btn-warning tab-button create-user"> Submit
-					</button>
-					
-					
-					
-					</form>	
-               
-               
-               
-                
-                </hr>
+					</form>
+				</hr>
             </div>
         </div>
     </header>

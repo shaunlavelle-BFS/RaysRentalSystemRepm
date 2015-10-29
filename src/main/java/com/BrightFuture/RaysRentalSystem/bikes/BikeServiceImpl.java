@@ -29,4 +29,16 @@ public class BikeServiceImpl implements BikeService {
 		//need a get and post method.. pass in a form with all details on
 		return null;
 	}
+
+	@Override
+	public int retrieveAvailableAdultBikeCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int retrieveAvailableChildBikeCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
