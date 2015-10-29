@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		
+	<title th:text="#{view.index.title}"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="description" content=""/>
+	<meta name="author" content=""/>
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="../../../resources/img/favicon.ico" type="image/x-icon" th:href="@{/resources/img/favicon.ico}"/>
+
+	<!-- Bootstrap Core CSS -->
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+	
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+    <link href="http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/>
+    <link href="../../../resources/font-awesome/css/font-awesome.min.css" rel="stylesheet" media="screen" th:href="@{/resources/font-awesome/css/font-awesome.min.css}"/>
+
+    <!-- Plugin CSS -->
+    <link href="../../../resources/css/animate.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/animate.min.css}"/>
+
+    <!-- Custom CSS -->
+    <link href="../../../resources/css/newBike.css" rel="stylesheet" media="screen" th:href="@{/resources/css/newBike.css}"/>
+	
+	<!-- IE9 Scripts -->
+   	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    
+    </head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Rays Rentals</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li th:if="${#authorization.expression('!isAuthenticated()')}">
+                        <a href="/signin" class="page-scroll" th:href="@{/signin}">Login</a>
+                    </li>
+                     <li th:if="${#authorization.expression('isAuthenticated()')}">
+	                 	<a href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
+	                    <form style="visibility: hidden" id="form" method="post" action="#" th:action="@{/logout}"></form>
+               		 </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+
+             <div class="col-lg-12 text-center">
+                    <h1 class="section-heading"> Add a new bike </h1>
+                    <hr class="light">
+                    </hr>
+                    <form th:if="${bike}" th:action="@{/stock}" method="POST" th:object="${stock}">
+                    	
+                   		<input type="hidden" class="id"></input>	
+                    	
+                    	
+                    	<div class="col-sm-12 margin-bottom-15 clearfix">
+	                    	<div class="col-md-2">
+								<label class="no-padding">Bike number </label>
+							</div>
+					  		<div class="col-md-4 ">
+								<input id="userFirstName" type="text" class="form-control "/>
+							</div>
+							<div class="col-md-2">
+								<label class="no-padding">Classification</label>
+							</div>
+							<div class="col-md-4 ">
+								<select id="userFirstName" type="text" class="form-control ">
+									<option value="">Select classification</option>
+									<option value="Road">Road</option>
+									<option value="Mountain">Mountain</option>
+									<option value="Tandem">Tandem</option>
+								</select>
+							</div>
+						</div>
+						
+					<div class="col-sm-12 margin-bottom-15 clearfix">
+						<div class="col-md-2">
+							<label class="no-padding">Gender</label>
+						</div>
+						<div class="col-md-4 ">
+							<select id="userFirstName" class="form-control">
+								<option value="">select gender</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+							</select>
+						</div>
+						
+						<div class="col-md-2">
+							<label class="no-padding">Model</label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-12 margin-bottom-15 clearfix">
+						<div class="col-md-2">
+							<label class="no-padding">Bike price </label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+						<div class="col-md-2">
+							<label class="no-padding">Purchase date</label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+					</div>
+					
+					<div class="col-sm-12 margin-bottom-40 clearfix">
+						<div class="col-md-2">
+							<label class="no-padding">Bike size  </label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+						<div class="col-md-2">
+							<label class="no-padding">Manufacturer ID</label>
+						</div>
+						<div class="col-md-4 ">
+							<input id="userFirstName" type="text" class="form-control"/>
+						</div>
+					</div>
+					
+					<button onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; " type="submit" th:href="@{/account/create}"
+					name="createUserBtn" id="createUserBtn"
+					class="btn btn-warning tab-button create-user"> Submit
+					</button>
+	
+					</form>	
+                </div>
+            </div>
+        </div>     
+    </header>
+
+	</body>
+</html>

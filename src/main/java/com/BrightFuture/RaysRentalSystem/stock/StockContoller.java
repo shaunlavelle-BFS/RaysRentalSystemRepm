@@ -13,7 +13,7 @@ public class StockContoller {
 	public ModelAndView addStock() 
 	{
 		Stock stock = new Stock();
-		ModelAndView mv = new ModelAndView("/stock");
+		ModelAndView mv = new ModelAndView("bike/stock");
 		mv.addObject("stock", stock);
 		return mv;
 	}
@@ -21,7 +21,7 @@ public class StockContoller {
 	@RequestMapping(value="stock", method = RequestMethod.POST) 
 	public ModelAndView addStock(Stock stock) 
 	{
-		ModelAndView mv = new ModelAndView("/stock");
+		ModelAndView mv = new ModelAndView("bike/stock");
 		mv.addObject("stock", stock);
 		return mv;
 	}
