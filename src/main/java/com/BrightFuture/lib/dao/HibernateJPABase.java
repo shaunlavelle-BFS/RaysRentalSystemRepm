@@ -22,9 +22,9 @@ public class HibernateJPABase<T, ID extends Serializable> extends GenericDAOImpl
 		super.setEntityManager(entityManager);
 	}
 	
-	/*@Override
+	@Override
     @Autowired
     public void setSearchProcessor(JPASearchProcessor searchProcessor){
         super.setSearchProcessor(searchProcessor);
-    }*/
+    }
 }

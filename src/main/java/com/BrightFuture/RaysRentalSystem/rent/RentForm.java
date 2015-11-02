@@ -4,10 +4,7 @@ import java.math.BigDecimal;
 import java.security.Timestamp;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.List;
 
-import com.BrightFuture.RaysRentalSystem.address.Address;
-import com.BrightFuture.RaysRentalSystem.bikes.Bike;
 import com.BrightFuture.RaysRentalSystem.customer.Customer;
 
 /**
@@ -16,73 +13,103 @@ import com.BrightFuture.RaysRentalSystem.customer.Customer;
  */
 public class RentForm {
 	
+	public static Integer maleStandard;
+	
+	public static Integer maleLarge;
+	
+	public static  Integer femaleStandard;
+	
+	public static Integer femaleLarge;
+	
+	public static Integer child;
+	
 	public static Customer customer;
-	
-	public static List<Bike> bikes; 
-	
-	public static BigDecimal amountPaid;
 	
 	public static Date rentDate;
 	
-	public static Time timeOut;
+	public static String timeOut;
 	
-	public static Timestamp returnTimeDue;
+	public static String returnTimeDue;
 	
-	public static Timestamp returnTimeActual;
+	public static String amountPaid;
 	
-	public static Customer getCustomer() {
+	public  Integer getMaleStandard() {
+		return maleStandard;
+	}
+
+	public void setMaleStandard(Integer maleStandard) {
+		RentForm.maleStandard = maleStandard;
+	}
+
+	public  Integer getMaleLarge() {
+		return maleLarge;
+	}
+
+	public void setMaleLarge(Integer maleLarge) {
+		RentForm.maleLarge = maleLarge;
+	}
+
+	public  Integer getFemaleStandard() {
+		return femaleStandard;
+	}
+
+	public void setFemaleStandard(Integer femaleStandard) {
+		RentForm.femaleStandard = femaleStandard;
+	}
+
+	public  Integer getFemaleLarge() {
+		return femaleLarge;
+	}
+
+	public void setFemaleLarge(Integer femaleLarge) {
+		RentForm.femaleLarge = femaleLarge;
+	}
+
+	public  Integer getChild() {
+		return child;
+	}
+
+	public void setChild(Integer child) {
+		RentForm.child = child;
+	}
+
+	public  Customer getCustomer() {
 		return customer;
 	}
 
-	public static void setCustomer(Customer customer) {
+	public void setCustomer(Customer customer) {
 		RentForm.customer = customer;
 	}
 
-	public static List<Bike> getBikes() {
-		return bikes;
-	}
-
-	public static void setBikes(List<Bike> bikes) {
-		RentForm.bikes = bikes;
-	}
-
-	public static BigDecimal getAmountPaid() {
-		return amountPaid;
-	}
-
-	public static void setAmountPaid(BigDecimal amountPaid) {
-		RentForm.amountPaid = amountPaid;
-	}
-
-	public static Date getRentDate() {
+	public  Date getRentDate() {
 		return rentDate;
 	}
 
-	public static void setRentDate(Date rentDate) {
+	public void setRentDate(Date rentDate) {
 		RentForm.rentDate = rentDate;
 	}
 
-	public static Time getTimeOut() {
+	public  String getTimeOut() {
 		return timeOut;
 	}
 
-	public static void setTimeOut(Time timeOut) {
+	public void setTimeOut(String timeOut) {
 		RentForm.timeOut = timeOut;
 	}
 
-	public static Timestamp getReturnTimeDue() {
+	public  String getReturnTimeDue() {
 		return returnTimeDue;
 	}
 
-	public static void setReturnTimeDue(Timestamp returnTimeDue) {
+	public void setReturnTimeDue(String returnTimeDue) {
 		RentForm.returnTimeDue = returnTimeDue;
 	}
 
-	public static Timestamp getReturnTimeActual() {
-		return returnTimeActual;
+	public  String getAmountPaid() {
+		return amountPaid;
 	}
 
-	public static void setReturnTimeActual(Timestamp returnTimeActual) {
-		RentForm.returnTimeActual = returnTimeActual;
+	public void setAmountPaid(String amountPaid) {
+		RentForm.amountPaid = amountPaid;
 	}
 }

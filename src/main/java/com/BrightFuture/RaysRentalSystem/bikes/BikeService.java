@@ -1,12 +1,10 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
+import com.BrightFuture.RaysRentalSystem.constants.BikeSize;
+
 public interface BikeService {
 	
 	public Bike addNewBike(Bike bike);
 	
-	public Bike hireBike();
-
-	public int retrieveAvailableAdultBikeCount();
-
-	public int retrieveAvailableChildBikeCount();
+	public int retrieveAvailableBikeCount(BikeSize bikeSize);
 }

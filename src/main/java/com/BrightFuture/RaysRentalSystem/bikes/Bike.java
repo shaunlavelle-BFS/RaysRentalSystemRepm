@@ -22,7 +22,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Proxy;
 
 import com.BrightFuture.RaysRentalSystem.constants.Classification;
-import com.BrightFuture.RaysRentalSystem.constants.Size;
+import com.BrightFuture.RaysRentalSystem.constants.BikeSize;
 import com.BrightFuture.RaysRentalSystem.maintenance.MaintenanceRecord;
 import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
 
@@ -55,10 +55,13 @@ public class Bike {
 	private BigDecimal price;
 	
 	@Enumerated(EnumType.STRING)
-	private Size size;
+	private BikeSize bike_size;
 	
 	@Enumerated(EnumType.STRING)
 	private Classification classification;
+	
+	@Column(name="available")
+	private Boolean available;
 	
 	@OneToOne(mappedBy="bike")
 	private DisposalDetails disposalDetails;
@@ -68,6 +71,14 @@ public class Bike {
 	
 	@OneToMany(mappedBy="bike")
 	private List<RentalRecord> rentalRecords = new ArrayList<RentalRecord>();
+	
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public void setAvailable(Boolean available) {
+		this.available = available;
+	}
 	
 	public List<MaintenanceRecord> getMaintenanceRecords() {
 		return maintenanceRecords;
@@ -145,11 +156,11 @@ public class Bike {
 		this.price = price;
 	}
 
-	public Size getSize() {
-		return size;
+	public BikeSize getBike_size() {
+		return bike_size;
 	}
 
-	public void setSize(Size size) {
-		this.size = size;
+	public void setBike_size(BikeSize bike_size) {
+		this.bike_size = bike_size;
 	}
 }

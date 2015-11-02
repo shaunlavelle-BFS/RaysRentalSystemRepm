@@ -1,6 +1,6 @@
 package com.BrightFuture.RaysRentalSystem.constants;
 
-public enum Size
+public enum BikeSize
 {
 	LARGE_MALE("Large Male"),
 	LARGE_FEMALE("Large Female"),
@@ -10,7 +10,7 @@ public enum Size
 
 	private String prettyName;
 
-	private Size(String prettyName)
+	private BikeSize(String prettyName)
 	{
 		this.prettyName = prettyName;
 	}

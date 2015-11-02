@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="/index">Home</a>
+                <a class="navbar-brand page-scroll" href="/" th:href="@{/}">Home</a>
             </div>
          </div>
     </nav>
@@ -52,29 +52,195 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <h1>Rent a bike</h1>
-                <hr>
-				<body th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}">
+  			
+  				<body th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}">
+    
+    				<h3>Available Bikes:</h3>
+    				<h3>Male:</h3>
+    				<h5 th:text="'Standard: ' + ${standardMaleBikeCount}"></h5>
+    				<h5 th:text="'Large: ' + ${largeMaleBikeCount}"></h5>
+    				<h3>Female:</h3>
+    				<h5 th:text="'Standard: ' + ${standardFemaleBikeCount}"></h5>
+    				<h5 th:text="'Large: ' + ${largeFemaleBikeCount}"></h5>
+					<h3 th:text="'Child: ' + ${childBikeCount}"></h3>
+										
+					<form th:action="@{/rent}" method="POST" th:object="${rentForm}">
 					
-					<h3>Adult bikes available:</h3>
-					<h3>Child bikes available:</h3>
+					<h3>Choose Bikes:</h3>
+					<br></br>
+					Male Standard
+					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" />
+					<br></br>
+					Male Large
+					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" />
+					<br></br>
+					Female Standard
+					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" />
+					<br></br>
+					Female Large
+					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" />
+					<br></br>
+					Child
+					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" />
+					<br></br>
 					
+					<input type="date" name="rentDate" style="color:black;" th:field="*{rentDate}"></input>
 					
+					<h3>Customer Details:</h3>
+					<h4>First Name:</h4>
+					<input style="color:black;" type="text" id="firstName" name="customer.firstName" th:field="*{customer.firstName}" />
+					<h4>Surname:</h4>
+					<input style="color:black;" type="text" id="surname" name="customer.surname" th:field="*{customer.surname}" />					
+					<h4>Contact number:</h4>
+					<input style="color:black;" type="text" id="telephone" name="customer.telephone" th:field="*{customer.telephone}" />	
 					
+					<h4>Address Line 1:</h4>
+					<input style="color:black;" type="text" id="AddressLine1" name="customer.address.addressLine1" th:field="*{customer.address.addressLine1}" />
 					
+					<h4>Address Line 2:</h4>
+					<input style="color:black;" type="text" id="AddressLine2" name="customer.address.addressLine2" th:field="*{customer.address.addressLine2}" />
 					
+					<h4>City:</h4>
+					<input style="color:black;" type="text" id="City" name="customer.address.city" th:field="*{customer.address.city}" />
 					
+					<h4>County:</h4>
+					<input style="color:black;" type="text" id="County" name="customer.address.county" th:field="*{customer.address.county}" />
 					
-				
+					<h4>Postcode:</h4>
+					<input style="color:black;" type="text" id="Postcode" name="customer.address.postcode" th:field="*{customer.address.postcode}" />
 					
-				
-				
-				
-				
-				
-				
-					<form th:action="@{/rentBike}" method="POST" th:object="${rentForm}">
-	
-						<input type="hidden" class="id"></input>
+					<h4>Time Out:</h4>
+					<input style="color:black;" type="time" th:field="*{timeOut}"></input>
+					 
+					<h4>Return Time:</h4>
+					<input style="color:black;" type="time" th:field="*{returnTimeDue}"></input>
+					
+					<h4>Amount paid:</h4>
+					<input style="color:black;" type="text" id="amountPaid" name="amountPaid" th:field="*{amountPaid}" />
+					<br></br>
+					<br></br>
+					<br></br>
+					<br></br>
+					<button	onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; "
+						type="submit" name="createUserBtn" id="createUserBtn" class="btn btn-warning tab-button create-user">Rent</button>
+					
+					</form>
+					
+					</body>
+
+	 </div>
+        </div>
+    </header>	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<body th:if="${rentForm} and ${#authorization.expression('!isAuthenticated()')}">
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Reserve or Rent Today!</h2>
+                    <hr class="light">
+                    <p class="text-faded">To start your rays rental experience please call the number below or view our bikes first!</p>
+                    <a href="#" class="btn btn-default btn-xl">Our Bicycle Collection</a>
+                    </hr>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Ride Away Today</h2>
+                <hr class="primary">
+                 <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                    <p>0800737854</p>
+                </div>
+                </hr>
+        	</div>
+      	</div>
+     </aside>
+     
+     </body>
+
+    <!-- jQuery -->
+    <script src="../../../resources/js/jquery.js" th:src="@{/resources/js/jquery.js}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="../../../resources/js/jquery.easing.min.js" th:src="@{/resources/js/jquery.easing.min.js}"></script>
+    <script src="../../../resources/js/jquery.fittext.js" th:src="@{/resources/js/jquery.fittext.js}"></script>
+    <script src="../../../resources/js/wow.min.js" th:src="@{/resources/js/wow.min.js}"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../../../resources/js/creative.js" th:src="@{/resources/js/creative.js}"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- <input type="hidden" class="id"></input>
 	
 						<div class="col-sm-12 margin-bottom-15 clearfix">
 							<div class="col-md-2">
@@ -145,61 +311,29 @@
 							<div class="col-md-4 ">
 								<input id="userFirstName" type="text" class="form-control" />
 							</div>
-						</div>
+						</div> -->
 	
-						<button	onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; "
-							type="submit" th:href="@{/account/create}" name="createUserBtn" id="createUserBtn" class="btn btn-warning tab-button create-user"> Submit</button>
-					
-					</form>
-				</hr>
-            </div>
-        </div>
-    </header>
 
-	<body th:if="${rentForm} and ${#authorization.expression('!isAuthenticated()')}">
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Reserve or Rent Today!</h2>
-                    <hr class="light">
-                    <p class="text-faded">To start your rays rental experience please call the number below or view our bikes first!</p>
-                    <a href="#" class="btn btn-default btn-xl">Our Bicycle Collection</a>
-                    </hr>
-                </div>
-            </div>
-        </div>
-    </section>
 
-     <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Ride Away Today</h2>
-                <hr class="primary">
-                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>0800737854</p>
-                </div>
-                </hr>
-        	</div>
-      	</div>
-     </aside>
-     
-     </body>
 
-    <!-- jQuery -->
-    <script src="../../../resources/js/jquery.js" th:src="@{/resources/js/jquery.js}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="../../../resources/js/jquery.easing.min.js" th:src="@{/resources/js/jquery.easing.min.js}"></script>
-    <script src="../../../resources/js/jquery.fittext.js" th:src="@{/resources/js/jquery.fittext.js}"></script>
-    <script src="../../../resources/js/wow.min.js" th:src="@{/resources/js/wow.min.js}"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../../../resources/js/creative.js" th:src="@{/resources/js/creative.js}"></script>
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
