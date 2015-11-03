@@ -1,9 +1,6 @@
 package com.BrightFuture.RaysRentalSystem.rent;
 
-import java.math.BigDecimal;
-import java.security.Timestamp;
 import java.sql.Date;
-import java.sql.Time;
 
 import com.BrightFuture.RaysRentalSystem.customer.Customer;
 

@@ -1,5 +1,7 @@
 package com.BrightFuture.RaysRentalSystem.bikes;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +15,14 @@ public class BikeServiceImpl implements BikeService {
 
 	@Autowired
 	BikeDAO bikeDAO;
-	
+
 	@Override
 	public Bike addNewBike(Bike bike) {
 		return null;
 	}
 
 	@Override
-	public int retrieveAvailableBikeCount(BikeSize bikeSize) {
-		return bikeDAO.retrieveAvailableBikeCount(bikeSize);
+	public List<Bike> retrieveAvailableBikes(BikeSize bikeSize, Boolean available) {
+		return bikeDAO.retrieveAvailableBikes(bikeSize, available);
 	}
 }

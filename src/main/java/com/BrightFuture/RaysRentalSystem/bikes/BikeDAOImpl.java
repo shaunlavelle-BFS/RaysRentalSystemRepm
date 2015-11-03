@@ -16,11 +16,11 @@ import com.googlecode.genericdao.search.Search;
 class BikeDAOImpl extends HibernateJPABase<Bike, Long> implements BikeDAO
 {
 	@Override
-	public int retrieveAvailableBikeCount(BikeSize bikeSize) {
+	public List<Bike> retrieveAvailableBikes(BikeSize bikeSize, Boolean available) {
 		Search bikeSearch = new Search(Bike.class);
 		bikeSearch.addFilterEqual("bike_size", bikeSize);
-		//TODO Filter only available bikes. Bike table needs available Flag.
+		bikeSearch.addFilterEqual("available", available);
 		List<Bike> bikesRetrieved = super.search(bikeSearch);
-		return bikesRetrieved.size();
+		return bikesRetrieved;
 	}
 }
