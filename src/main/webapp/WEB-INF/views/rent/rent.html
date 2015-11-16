@@ -48,123 +48,153 @@
             </div>
          </div>
     </nav>
-	<header>
-        <div class="header-content">
+         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Rent a bike</h1>
+                <h1 th:if="${#authorization.expression('!isAuthenticated()')}">Rent a bike</h1>
   			
-  				<body th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}">
-    
-    				<h3>Available Bikes:</h3>
-    				<h3>Male:</h3>
-    				<h5 th:text="'Standard: ' + ${standardMaleBikeCount}"></h5>
-    				<h5 th:text="'Large: ' + ${largeMaleBikeCount}"></h5>
-    				<h3>Female:</h3>
-    				<h5 th:text="'Standard: ' + ${standardFemaleBikeCount}"></h5>
-    				<h5 th:text="'Large: ' + ${largeFemaleBikeCount}"></h5>
-					<h3 th:text="'Child: ' + ${childBikeCount}"></h3>
-										
-					<form th:action="@{/rent}" method="POST" th:object="${rentForm}">
+  				<div th:if="${rentForm} and ${#authorization.expression('isAuthenticated()')}">
+    				
+    				<div class="col-sm-12 ">
+    					<div class="col-sm-12">
+	    					<h3 class="text-left">Available Bikes:</h3>
+	    				</div>
+		    			<div class="col-sm-6">
+							<div class="col-sm-3">
+								<h4>Male:</h4>
+							</div>
+							<div class="col-sm-5">
+								<h4 th:text="'Standard: ' + ${standardMaleBikeCount}"></h4>
+							</div>
+	    					<div class="col-sm-4">
+	    						<h4 th:text="'Large: ' + ${largeMaleBikeCount}"></h4>
+	    					</div>
+	    				</div>
+	    			</div>	
+	    			<div class="col-sm-12">
+	    				<div class="col-sm-6">
+							<div class="col-sm-3">
+								<h4>Female:</h4>
+							</div>
+							<div class="col-sm-5">
+								<h4 th:text="'Standard: ' + ${standardFemaleBikeCount}"></h4>
+							</div>
+    						<div class="col-sm-4">
+    							<h4 th:text="'Large: ' + ${largeFemaleBikeCount}"></h4>
+    						</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+	    				<div class="col-sm-6">
+							<div class="col-sm-3">
+								<h4>Child:</h4>
+							</div>
+							<div class="col-sm-5">
+								<h4 th:text="'Standard: ' + ${childBikeCount}"></h4>
+							</div>
+						</div>
+					</div>
 					
-					<h3>Choose Bikes:</h3>
-					<br></br>
-					Male Standard
-					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{maleStandard}" />
-					<br></br>
-					Male Large
-					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{maleLarge}"/>
-					<br></br>
-					Female Standard
-					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{femaleStandard}"/>
-					<br></br>
-					Female Large
-					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{femaleLarge}"/>
-					<br></br>
-					Child
-					<input style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{child}"/>
-					<br></br>
+					<form th:action="@{/}" method="POST" th:object="${rentForm}">
+									
+					<!-- <div th:each="err : ${#fields.errors('*')}"  class="alert alert-danger alert-dismissible col-md-4" role="alert" >
+	 					<button type="button" class="close" data-dismiss="alert" aria-h4="Close"><span aria-hidden="true">&times;</span></button>
+	 					<span th:text="${err}"></span>
+					</div>  -->
 					
-					<input type="date" name="rentDate" style="color:black;" th:field="*{rentDate}"></input>
+					<div class="col-sm-12">
+						<h3>Choose Bikes:</h3>
+						<div class="col-sm-2 col-sm-offset-1 form-group">
+							<h5>Male Standard:</h5>
+							<input class="form-control" style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{maleStandard}" />
+						</div>
+						<div class="col-sm-2  form-group">
+							<h5>Male Large:</h5>
+							<input class="form-control" style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{maleLarge}" />
+						</div>
+						<div class="col-sm-2 form-group">
+							<h5>Female Standard:</h5>
+							<input class="form-control" style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{femaleStandard}" />
+						</div>
+						<div class="col-sm-2 form-group">
+							<h5>Female Large:</h5>
+							<input class="form-control" style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{femaleLarge}" />
+						</div>
+						<div class="col-sm-2 form-group">
+							<h5>Child:</h5>
+							<input class="form-control" style="color:black;" id="intNumber" type="number" min="0" max="20" value="0" th:field="*{child}" />
+						</div>
+					</div>
 					
-					<h3>Customer Details:</h3>
-					<h4>First Name:</h4>
-					<input style="color:black;" type="text" id="firstName" name="customer.firstName" th:field="*{customer.firstName}" />
-					<h4>Surname:</h4>
-					<input style="color:black;" type="text" id="surname" name="customer.surname" th:field="*{customer.surname}" />					
-					<h4>Contact number:</h4>
-					<input style="color:black;" type="text" id="telephone" name="customer.telephone" th:field="*{customer.telephone}" />	
+					<div class="col-sm-12">
+						<h3>Customer Details:</h3>
+					</div>
+					<div class="col-sm-6" >
+						<div class="col-sm-6">
+							<h4>First Name:</h4>
+							<input class="form-control" style="color:black;" type="text" id="firstName" name="customer.firstName" th:field="*{customer.firstName}" th:errorclass="has-error"/>
+						</div>
+						<div class="col-sm-6">
+							<h4>Surname:</h4>
+							<input class="form-control" style="color:black;" type="text" id="surname" name="customer.surname" th:field="*{customer.surname}" />					
+						</div>
+						<div class="col-sm-6">
+							<h4>Contact number:</h4>
+							<input style="color:black;" class="form-control" type="text" id="telephone" name="customer.telephone" th:field="*{customer.telephone}" />	
+						</div>
+						<div class="col-sm-6">
+							<h4>Postcode:</h4>
+							<input style="color:black;" class="form-control" type="text" id="Postcode" name="customer.address.postcode" th:field="*{customer.address.postcode}" />
+						</div>
+						<div class="col-sm-2"></div>
+					</div>
+					<div class="col-sm-6" style="border-left: 2px solid white; margin-bottom:20px;">	
+						<div class="col-sm-6">			
+							<h4>Address Line 1:</h4>
+							<input style="color:black;" class="form-control" type="text" id="AddressLine1" name="customer.address.addressLine1" th:field="*{customer.address.addressLine1}" />
+						</div>
+						<div class="col-sm-6">
+							<h4>City:</h4>
+							<input style="color:black;" class="form-control" type="text" id="City" name="customer.address.city" th:field="*{customer.address.city}" />
+						</div>
+						<div class="col-sm-6">	
+							<h4>Address Line 2:</h4>
+							<input style="color:black;" class="form-control" type="text" id="AddressLine2" name="customer.address.addressLine2" th:field="*{customer.address.addressLine2}" />
+						</div>
+						<div class="col-sm-6">
+							<h4>County:</h4>
+							<input style="color:black;" class="form-control" type="text" id="County" name="customer.address.county" th:field="*{customer.address.county}" />
+						</div>
+					</div>
 					
-					<h4>Address Line 1:</h4>
-					<input style="color:black;" type="text" id="AddressLine1" name="customer.address.addressLine1" th:field="*{customer.address.addressLine1}" />
-					
-					<h4>Address Line 2:</h4>
-					<input style="color:black;" type="text" id="AddressLine2" name="customer.address.addressLine2" th:field="*{customer.address.addressLine2}" />
-					
-					<h4>City:</h4>
-					<input style="color:black;" type="text" id="City" name="customer.address.city" th:field="*{customer.address.city}" />
-					
-					<h4>County:</h4>
-					<input style="color:black;" type="text" id="County" name="customer.address.county" th:field="*{customer.address.county}" />
-					
-					<h4>Postcode:</h4>
-					<input style="color:black;" type="text" id="Postcode" name="customer.address.postcode" th:field="*{customer.address.postcode}" />
-					
-					<h4>Time Out:</h4>
-					<input style="color:black;" type="time" th:field="*{timeOut}"></input>
-					 
-					<h4>Return Time:</h4>
-					<input style="color:black;" type="time" th:field="*{returnTimeDue}"></input>
-					
-					<h4>Amount paid:</h4>
-					<input style="color:black;" type="text" id="amountPaid" name="amountPaid" th:field="*{amountPaid}" />
-					<br></br>
-					<br></br>
-					<br></br>
-					<br></br>
-					<button	onClick="this.form.submit(); this.disabled=true; this.value='Sending…'; "
-						type="submit" name="createUserBtn" id="createUserBtn" class="btn btn-warning tab-button create-user">Rent</button>
-					
+					<div class="col-sm-12">
+						<div class="col-sm-3">
+						<h4>Rent Date:</h4>
+							<input style="color:black;" class="form-control" type="date" id="RentDate" name="rentDate" th:field="*{rentDate}" />
+						</div>
+						<div class="col-sm-2">
+						<h4>Rent Duration:</h4>
+							<select class="form-control" name="rentDuration">
+							  <option style="color:black;" th:each="rentDuration : ${T(com.BrightFuture.RaysRentalSystem.constants.RentDuration).values()}" th:value="${rentDuration}" th:text="${rentDuration.prettyName}"></option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+						<h4>Amount Paid:</h4>
+							<div class="input-group">
+	   							<div class="input-group-addon">&#163;</div>
+	     						<input type="number" class="form-control" id="exampleInputAmount" placeholder="Amount" th:field="*{amountPaid}"></input>
+	   						</div>
+	   					</div>
+	   					<br></br>
+	   					<br></br>
+						<button type="submit" name="createUserBtn" id="createUserBtn" data-url="rent" class="col-sm-2 btn btn-warning tab-button create-user">Rent</button>
+						<button type="submit" name="createUserBtn" id="createUserBtn2" data-url="reserve" class="col-sm-2 btn btn-warning tab-button create-user">Reserve</button>
+						</div>
 					</form>
-					
-					</body>
-
+	 </div>
 	 </div>
         </div>
-    </header>	
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<body th:if="${rentForm} and ${#authorization.expression('!isAuthenticated()')}">
+	<div th:if="${rentForm} and ${#authorization.expression('!isAuthenticated()')}">
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
@@ -193,11 +223,11 @@
       	</div>
      </aside>
      
-     </body>
+     </div>
 
     <!-- jQuery -->
-    <script src="../../../resources/js/jquery.js" th:src="@{/resources/js/jquery.js}"></script>
-
+    <script th:src="@{/resources/js/jquery.js}"></script>
+    
     <!-- Bootstrap Core JavaScript -->
     <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
 
@@ -208,132 +238,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../../../resources/js/creative.js" th:src="@{/resources/js/creative.js}"></script>
+    
+    					
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<!-- <input type="hidden" class="id"></input>
-	
-						<div class="col-sm-12 margin-bottom-15 clearfix">
-							<div class="col-md-2">
-								<label class="no-padding">Bike number</label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control " />
-							</div>
-							<div class="col-md-2">
-								<label class="no-padding">Classification</label>
-							</div>
-							<div class="col-md-4 ">
-								<select id="userFirstName" type="text" class="form-control ">
-									<option value="">Select classification</option>
-									<option value="Road">Road</option>
-									<option value="Mountain">Mountain</option>
-									<option value="Tandem">Tandem</option>
-								</select>
-							</div>
-						</div>
-	
-						<div class="col-sm-12 margin-bottom-15 clearfix">
-							<div class="col-md-2">
-								<label class="no-padding">Gender</label>
-							</div>
-							
-							<div class="col-md-4 ">
-								<select id="userFirstName" class="form-control">
-									<option value="">select gender</option>
-									<option value="male">Male</option>
-									<option value="female">Female</option>
-								</select>
-							</div>
-	
-							<div class="col-md-2">
-								<label class="no-padding">Model</label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control" />
-							</div>
-						</div>
-	
-						<div class="col-sm-12 margin-bottom-15 clearfix">
-							<div class="col-md-2">
-								<label class="no-padding">Bike price </label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control" />
-							</div>
-							<div class="col-md-2">
-								<label class="no-padding">Purchase date</label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control" />
-							</div>
-						</div>
-	
-						<div class="col-sm-12 margin-bottom-40 clearfix">
-							<div class="col-md-2">
-								<label class="no-padding">Bike size </label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control" />
-							</div>
-							<div class="col-md-2">
-								<label class="no-padding">Manufacturer ID</label>
-							</div>
-							<div class="col-md-4 ">
-								<input id="userFirstName" type="text" class="form-control" />
-							</div>
-						</div> -->
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,8 @@
 package com.BrightFuture.RaysRentalSystem.rent;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -11,8 +13,8 @@ import org.springframework.stereotype.Service;
 import com.BrightFuture.RaysRentalSystem.address.AddressDAO;
 import com.BrightFuture.RaysRentalSystem.bikes.Bike;
 import com.BrightFuture.RaysRentalSystem.bikes.BikeDAO;
-import com.BrightFuture.RaysRentalSystem.bikes.RentalRecord;
 import com.BrightFuture.RaysRentalSystem.constants.BikeSize;
+import com.BrightFuture.RaysRentalSystem.constants.RentDuration;
 import com.BrightFuture.RaysRentalSystem.customer.CustomerDAO;
 
 @Service
@@ -62,18 +64,28 @@ public class RentServiceImpl implements RentService {
 		
 		addressDAO.save(rentForm.getCustomer().getAddress());
 		customerDAO.save(rentForm.getCustomer());
-		
+		System.out.println(rentForm.getAmountPaid());;
 		for (Bike bike : bikesToRent) {
 			bike.setAvailable(false);
 			bikeDAO.save(bike);
 			RentalRecord rentalRecord = new RentalRecord();
 			rentalRecord.setCustomer(rentForm.getCustomer());
 			rentalRecord.setBike(bike);
-			//rentalRecord.setTimeOut(rentForm.getTimeOut());
-			//rentalRecord.setReturnTimeDue(rentForm.getReturnTimeDue());
 			rentalRecord.setRentDate(rentForm.getRentDate());
-			//rentalRecord.setAmountPaid(rentForm.getAmountPaid());
+			Date date = new Date();
+			java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
+			rentalRecord.setTimeOut(timestamp);
 			
+			if(rentForm.getRentDuration().equals(RentDuration.HALF_DAY))
+			{
+				timestamp.setHours(timestamp.getHours()+4);
+			}
+			else
+			{
+				timestamp.setHours(timestamp.getHours()+8);
+			}
+			rentalRecord.setReturnTimeDue(timestamp);
+			rentalRecord.setAmountPaid(rentForm.getAmountPaid());
 			rentDAO.save(rentalRecord);
 		}
 	}

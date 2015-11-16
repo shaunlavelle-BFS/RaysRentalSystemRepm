@@ -25,6 +25,7 @@ import com.BrightFuture.RaysRentalSystem.constants.Classification;
 import com.BrightFuture.RaysRentalSystem.constants.BikeSize;
 import com.BrightFuture.RaysRentalSystem.maintenance.MaintenanceRecord;
 import com.BrightFuture.RaysRentalSystem.manufacturer.Manufacturer;
+import com.BrightFuture.RaysRentalSystem.rent.RentalRecord;
 
 /**
  * @author slavelle

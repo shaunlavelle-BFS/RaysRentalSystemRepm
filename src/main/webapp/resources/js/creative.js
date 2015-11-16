@@ -1,3 +1,5 @@
+$(document).ready(function(){
+	
 /*!
  * Start Bootstrap - Creative Bootstrap Theme (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -46,3 +48,14 @@
     new WOW().init();
 
 })(jQuery); // End of use strict
+
+
+
+$(".create-user").click(function(e){
+	e.preventDefault();
+	
+	var url = $(this).data("url");
+	
+	$(this).parents("form").attr('action',url).submit();
+});
+});

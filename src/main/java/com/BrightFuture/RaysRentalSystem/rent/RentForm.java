@@ -2,6 +2,7 @@ package com.BrightFuture.RaysRentalSystem.rent;
 
 import java.sql.Date;
 
+import com.BrightFuture.RaysRentalSystem.constants.RentDuration;
 import com.BrightFuture.RaysRentalSystem.customer.Customer;
 
 /**
@@ -24,11 +25,9 @@ public class RentForm {
 	
 	public static Date rentDate;
 	
-	public static String timeOut;
+	public static RentDuration rentDuration;
 	
-	public static String returnTimeDue;
-	
-	public static String amountPaid;
+	public static Integer amountPaid;
 	
 	public  Integer getMaleStandard() {
 		return maleStandard;
@@ -86,27 +85,19 @@ public class RentForm {
 		RentForm.rentDate = rentDate;
 	}
 
-	public  String getTimeOut() {
-		return timeOut;
+	public RentDuration getRentDuration() {
+		return rentDuration;
 	}
 
-	public void setTimeOut(String timeOut) {
-		RentForm.timeOut = timeOut;
+	public static void setRentDuration(RentDuration rentDuration) {
+		RentForm.rentDuration = rentDuration;
 	}
 
-	public  String getReturnTimeDue() {
-		return returnTimeDue;
-	}
-
-	public void setReturnTimeDue(String returnTimeDue) {
-		RentForm.returnTimeDue = returnTimeDue;
-	}
-
-	public  String getAmountPaid() {
+	public  Integer getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(String amountPaid) {
+	public void setAmountPaid(Integer amountPaid) {
 		RentForm.amountPaid = amountPaid;
 	}
 }

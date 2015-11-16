@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,9 @@ public class RentController {
 	@Autowired
 	RentService rentService;
 	
+	@Autowired
+	RentValidator rentValidator;
+	
 	@RequestMapping(value= "rent", method = RequestMethod.GET)
 	public ModelAndView rentView() {
 		RentForm rentForm = new RentForm();
@@ -36,7 +40,7 @@ public class RentController {
 		List<Bike> standardMaleBikeCount = bikeService.retrieveAvailableBikes(BikeSize.STANDARD_MALE, true);
 		List<Bike> standardFemaleBikeCount = bikeService.retrieveAvailableBikes(BikeSize.STANDARD_FEMALE, true);
 		List<Bike> childBikeCount = bikeService.retrieveAvailableBikes(BikeSize.CHILD, true);
-		
+
 		mv.addObject(rentForm);
 		mv.addObject("largeMaleBikeCount", largeMaleBikeCount.size());
 		mv.addObject("largeFemaleBikeCount", largeFemaleBikeCount.size());
@@ -48,15 +52,15 @@ public class RentController {
 	}
 	
 	@RequestMapping(value= "rent", method = RequestMethod.POST)
-	public ModelAndView rentBikes(@ModelAttribute("rentForm") RentForm rentForm) { 
-		//TODO Validation 
-		if(rentForm != null)
-		{
-			rentService.rentBikes(rentForm);
+	public ModelAndView rentBikes(@ModelAttribute("rentForm") RentForm rentForm, BindingResult bindingResult) { 
+		rentValidator.validate(rentForm, bindingResult);
+		
+		if (bindingResult.hasErrors()) {
+			ModelAndView mv = new ModelAndView("rent/rent");
+			return mv;
 		}
 		
-		/*java.sql.Timestamp sq = new java.sql.Timestamp(rentForm.getRentDate().getTime());
-		System.out.println(sq);*/
+		rentService.rentBikes(rentForm);
 		
 		ModelAndView mv = new ModelAndView("home/index");
 		return mv;

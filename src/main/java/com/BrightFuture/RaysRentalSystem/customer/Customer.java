@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Proxy;
 
 import com.BrightFuture.RaysRentalSystem.address.Address;
-import com.BrightFuture.RaysRentalSystem.bikes.RentalRecord;
+import com.BrightFuture.RaysRentalSystem.rent.RentalRecord;
 
 /**
  * @author slavelle

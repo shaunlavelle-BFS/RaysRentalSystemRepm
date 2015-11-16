@@ -1,6 +1,5 @@
-package com.BrightFuture.RaysRentalSystem.bikes;
+package com.BrightFuture.RaysRentalSystem.rent;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -16,6 +15,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import com.BrightFuture.RaysRentalSystem.bikes.Bike;
 import com.BrightFuture.RaysRentalSystem.customer.Customer;
 
 @Entity
@@ -39,7 +39,7 @@ public class RentalRecord {
 	private Timestamp returnTimeActual;
 	
 	@Column(name="amount_paid")
-	private BigDecimal amountPaid;
+	private Integer amountPaid;
 	
 	@ManyToOne()
 	@JoinColumn(name="bike_id", foreignKey=@ForeignKey(name="rental_record_bike_id_fkey"))
@@ -85,12 +85,12 @@ public class RentalRecord {
 		this.returnTimeActual = returnTimeActual;
 	}
 
-	public BigDecimal getAmountPaid() {
+	public Integer getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(BigDecimal amountPaid) {
-		this.amountPaid = amountPaid;
+	public void setAmountPaid(Integer integer) {
+		this.amountPaid = integer;
 	}
 
 	public Bike getBike() {
